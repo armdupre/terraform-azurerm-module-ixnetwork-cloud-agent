@@ -2,7 +2,7 @@ locals {
 	AdminUserName = var.AdminUserName
 	DisablePasswordAuthentication = var.DisablePasswordAuthentication
 	DnsLabel = replace(lower("${local.Preamble}-dns"), "_", "-")
-	EnableAcceleratedNetworking = false
+	EnableAcceleratedNetworking = true
 	EnableIpForwarding = var.EnableIpForwarding
 	Eth0IpAddress = var.Eth0IpAddress
 	Eth0Name = "${local.Preamble}-eth0"
