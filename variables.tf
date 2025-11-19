@@ -38,6 +38,17 @@ variable "Eth1SubnetId" {
 	type = string
 }
 
+variable "Eth2IpAddresses" {
+	default = ["10.0.3.12", "10.0.3.13", "10.0.3.14", "10.0.3.15", "10.0.3.16", "10.0.3.17", "10.0.3.18", "10.0.3.19", "10.0.3.20", "10.0.3.21"]
+	description = "Private ip addresses associated with the third network interface"
+	type = list(string)
+}
+
+variable "Eth2SubnetId" {
+	description = "Id of the subnet associated with the third network interface"
+	type = string
+}
+
 variable "ImageSku" {
 	default = "keysight-ixnetwork-cloud-test-appliance-11-00"
 	description = "An instance of an offer, such as a major release of a distribution."
@@ -127,11 +138,10 @@ variable "VmSize" {
 	description = "Category, series and instance specifications associated with the VM"
 	type = string
 	validation {
-		condition = contains([	"Standard_F4s_v2",	"Standard_F8s_v2",	"Standard_F16s_v2"
-							], var.VmSize)
+		condition = contains([ "Standard_F4s_v2", "Standard_F8s_v2", "Standard_F16s_v2", Standard_E8_v5], var.VmSize)
 		error_message = <<EOF
 VmSize must be one of the following sizes:
-	Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2
+	Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_E8_v5
 		EOF
 	}
 }
